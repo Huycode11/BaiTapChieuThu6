@@ -19,7 +19,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Build JAR
-      run: mvn clean package -DskipTests
+      run: cd PhamVanHuy && mvn clean package -DskipTests
 
     - name: Login Docker Hub
       uses: docker/login-action@v3
