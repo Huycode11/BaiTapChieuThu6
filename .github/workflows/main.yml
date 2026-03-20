@@ -19,7 +19,8 @@ jobs:
         distribution: 'temurin'
 
     - name: Build JAR
-      run: cd PhamVanHuy && mvn clean package -DskipTests
+      working-directory: PhamVanHuy
+      run: ./mvnw clean package -DskipTests
 
     - name: Login Docker Hub
       uses: docker/login-action@v3
@@ -30,6 +31,6 @@ jobs:
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v5
       with:
-        context: .
+        context: ./PhamVanHuy
         push: true
         tags: vanhuy04/phamvanhuy-app:latest
